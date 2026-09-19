@@ -566,6 +566,9 @@ matteList = [];
 
             if (isRasterized == false) {
                 trackMatte.parent = nullLayer;
+                trackMatte.position.setValue([0,0]);
+                trackMatte.scale.setValue([100,100]);
+                trackMatte.rotation.setValue(0);
             }
 
             layerToDisable.enabled = false;
