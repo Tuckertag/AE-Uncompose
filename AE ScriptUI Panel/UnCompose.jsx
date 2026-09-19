@@ -36,6 +36,8 @@ var icon_imgString = "%C2%89PNG%0D%0A%1A%0A%00%00%00%0DIHDR%00%00%00%1D%00%00%00
 var unCompseButton = actionButtons.add("iconbutton", undefined, File.decode(icon_imgString), {name: "uncompose", style: "toolbutton"}); 
 unCompseButton.helpTip = "Uncompose selected precomp";
 
+showWindow(UnCompose);
+
 unCompseButton.onClick = function(){
 
 comp = app.project.activeItem;
