@@ -145,13 +145,8 @@ matteList = [];
                 trackPath.property("Size").setValue([precompWidth,precompHeight]);
                 matteFill = trackContents.addProperty("ADBE Vector Graphic - Fill");
                 matteFill.property("Color").setValue([1, 0, 0]);
-                trackMatte.scale.setValue(precompScale);
-                trackMatte.opacity.setValue(layerOpacity);
-                trackMatte.rotation.setValue(layerRot);
                 trackMatte.moveBefore(layer);
                 trackMatte.label = labelIndex;
-                trackMatte.anchorPoint.setValue([layerAnchor[0] - precompWidth/2, layerAnchor[1] - precompHeight/2]);
-                trackMatte.position.setValue(layerPos);
 
                 if(isShy == true){
                     trackMatte.shy = true;
@@ -558,6 +553,7 @@ matteList = [];
             }
             copyProp(selectedComp.position, nullLayer.position);
             copyProp(selectedComp.scale, nullLayer.scale);
+            copyProp(selectedComp.opacity, nullLayer.opacity);
             if (selectedComp.threeDLayer) {
                 nullLayer.threeDLayer = true;
                 copyProp(selectedComp.orientation, nullLayer.orientation);
@@ -569,20 +565,7 @@ matteList = [];
             }
 
             if (isRasterized == false) {
-                if (selectedComp.parent) {
-                    trackMatte.parent = selectedComp.parent;
-                }
-                copyProp(selectedComp.position, trackMatte.position);
-                copyProp(selectedComp.scale, trackMatte.scale);
-                if (selectedComp.threeDLayer) {
-                    trackMatte.threeDLayer = true;
-                    copyProp(selectedComp.orientation, trackMatte.orientation);
-                    copyProp(selectedComp.xRotation, trackMatte.xRotation);
-                    copyProp(selectedComp.yRotation, trackMatte.yRotation);
-                    copyProp(selectedComp.zRotation, trackMatte.zRotation);
-                } else {
-                    copyProp(selectedComp.rotation, trackMatte.rotation);
-                }
+                trackMatte.parent = nullLayer;
             }
 
             layerToDisable.enabled = false;
@@ -604,7 +587,6 @@ matteList = [];
     setMattePreset.remove();
     app.endUndoGroup();
     }
-
 }
 
     function copyProp(srcProp, destProp, offset) {
@@ -640,3 +622,4 @@ matteList = [];
             value[1] += offset[1];
         }
     }
+
