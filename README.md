@@ -2,7 +2,7 @@
 Hey there! Thanks for checking out my script! Uncompose is a script for Adobe After Effects that will expand your selected precompositions into your main composition. 
 
 --Versions--
-This script is for Adobe After Effects 2024 and later
+This script is for Adobe After Effects 2026 and later
 
 --How to Install--
 Open After Effects and go to File > Scripts > Install ScriptUI Panel and select the .jsx file from the folder named "AE ScriptUI Panel"
