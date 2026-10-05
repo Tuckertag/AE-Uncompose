@@ -614,6 +614,7 @@ matteList = [];
     setMattePreset.remove();
     app.endUndoGroup();
     }
+}
 
     function copyProp(srcProp, destProp, offset) {
         if (!srcProp || !destProp) return;
