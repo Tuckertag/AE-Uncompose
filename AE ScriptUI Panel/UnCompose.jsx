@@ -53,19 +53,6 @@ showWindow(UnCompose);
 
 unCompseButton.onClick = function(){
 
-function getTempPresetFile(fileName) {
-    var tempDir = $.getenv("TMPDIR");
-    if (!tempDir || !tempDir.length) {
-        tempDir = Folder.temp && Folder.temp.exists ? Folder.temp.fsName : "/tmp";
-    }
-
-    if (tempDir.charAt(tempDir.length - 1) === "/" || tempDir.charAt(tempDir.length - 1) === "\\") {
-        tempDir = tempDir.substring(0, tempDir.length - 1);
-    }
-
-    return new File(tempDir + File.separator + fileName);
-}
-
 comp = app.project.activeItem;
 compWidth = comp.width;
 compHeight = comp.height;
@@ -263,16 +250,16 @@ matteList = [];
                         newMaskMask = maskProperty.addProperty("ADBE Mask Atom");
                         newMaskMask.name = maskSource.name;
 
-                        copyProp(trackMaskSource.property("ADBE Mask Feather"), newMask.property("ADBE Mask Feather"));
-                        copyProp(trackMaskSource.property("ADBE Mask Opacity"), newMask.property("ADBE Mask Opacity"));
-                        copyProp(trackMaskSource.property("ADBE Mask Offset"), newMask.property("ADBE Mask Offset"));
-                        copyProp(trackMaskSource.property("ADBE Mask Shape"), newMask.property("ADBE Mask Shape"));
-                        copyExpression(trackMaskSource.property("ADBE Mask Feather"), newMask.property("ADBE Mask Feather"));
-                        copyExpression(trackMaskSource.property("ADBE Mask Opacity"), newMask.property("ADBE Mask Opacity"));
-                        copyExpression(trackMaskSource.property("ADBE Mask Offset"), newMask.property("ADBE Mask Offset"));
-                        copyExpression(trackMaskSource.property("ADBE Mask Shape"), newMask.property("ADBE Mask Shape"));
-                        newMask.maskMode = trackMaskSource.maskMode;
-                        newMask.inverted = trackMaskSource.inverted;
+                        copyProp(maskSource.property("ADBE Mask Feather"), newMaskMask.property("ADBE Mask Feather"));
+                        copyProp(maskSource.property("ADBE Mask Opacity"), newMaskMask.property("ADBE Mask Opacity"));
+                        copyProp(maskSource.property("ADBE Mask Offset"), newMaskMask.property("ADBE Mask Offset"));
+                        copyProp(maskSource.property("ADBE Mask Shape"), newMaskMask.property("ADBE Mask Shape"));
+                        copyExpression(maskSource.property("ADBE Mask Feather"), newMaskMask.property("ADBE Mask Feather"));
+                        copyExpression(maskSource.property("ADBE Mask Opacity"), newMaskMask.property("ADBE Mask Opacity"));
+                        copyExpression(maskSource.property("ADBE Mask Offset"), newMaskMask.property("ADBE Mask Offset"));
+                        copyExpression(maskSource.property("ADBE Mask Shape"), newMaskMask.property("ADBE Mask Shape"));
+                        newMaskMask.maskMode = maskSource.maskMode;
+                        newMaskMask.inverted = maskSource.inverted;
 
                         offset = [-(precompWidth/2), -(precompHeight/2)];
                         newMaskShape = newMaskMask.property("ADBE Mask Shape");
